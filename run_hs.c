@@ -1,8 +1,10 @@
 #include <HsFFI.h>
+
 #ifdef __GLASGOW_HASKELL__
-#include "Safe_stub.h"
-extern void __stginit_Safe(void);
+#include "hs_fibonacci_stub.h"
+extern void __stginit_Fibonacci(void);
 #endif
+
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -10,7 +12,7 @@ int main(int argc, char *argv[])
     int i;
     hs_init(&argc, &argv);
 #ifdef __GLASGOW_HASKELL__
-    hs_add_root(__stginit_Safe);
+    hs_add_root(__stginit_Fibonacci);
 #endif
 
     i = fibonacci_hs(42);
